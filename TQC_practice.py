@@ -1523,12 +1523,56 @@
 #             al+=int(i.strip())
 #     print(al)
 
-with open("data.txt","a+",encoding="utf-8") as f:
-    for i in range(5):
-        f.write(input()+"\n")
-    print("Append completed!\nContent of \"data.txt\":")
+# with open("data.txt","a+",encoding="utf-8") as f:
+#     for i in range(5):
+#         f.write(input()+"\n")
+#     print("Append completed!\nContent of \"data.txt\":")
+#     f.seek(0)
+#     print(f.read())
+
+# with open("read.txt","a+",encoding="utf-8") as f:
+#     f.seek(0)
+#     print(f.read())
+#     f.seek(0)
+#     lines=f.readlines()
+#     AH=0
+#     AW=0
+#     H={}
+#     w={}
+#     for i in lines:
+#         i=i.split(" ")
+#         AH+=int(i[1])
+#         H[i[0]]=int(i[1].strip())
+#         AW+=int(i[2].strip())
+#         w[i[0]]=int(i[2].strip())
+#     print("Average height: %.2f"%(AH/len(lines)))
+#     print("Average weight: %.2f"%(AW/len(lines)))
+#     print("The tallest is %s with %.2fcm"%(max(H, key=H.get), max(H.values())))
+#     print("The heaviest is %s with %.2fkg"%(max(w, key=w.get), max(w.values())))
+
+
+D=input()
+a=input()
+with open("data.txt","r",encoding="utf-8") as f:
     f.seek(0)
-    print(f.read())
+    a=f.read()
+    print("=== Before the deletion")
+    print(a)
+    print("=== After the deletion")
+    f.seek(0)
+    lines=f.readlines()
+    f.seek(0)
+    with open("data.txt","w",encoding="utf-8") as f:
+        for i in lines:
+            i=i.split(" ")
+            for i in i:
+                if i.strip()!=a:
+                    f.write(i+" ",end="")
+                f.write("\n")
+    with open("data.txt","r",encoding="utf-8") as f:
+        f.seek(0)
+        print(f.read())
+    
 
 
 
