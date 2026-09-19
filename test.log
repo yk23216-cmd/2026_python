@@ -1,0 +1,4 @@
+INFO: System start
+[CRITICAL - Line 2]ERROR: Database disconnected
+INFO: User login
+[CRITICAL - Line 4]ERROR: Timeout

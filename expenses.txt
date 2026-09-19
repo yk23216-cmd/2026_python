@@ -1,0 +1,5 @@
+sda 5
+ass 12
+sdsd 35
+sd 1
+C:\Users\user\AppData\Local\Programs\Python\Python313\python.exe c:/Users/user/OneDrive/桌面/Python/TQC_practice.py

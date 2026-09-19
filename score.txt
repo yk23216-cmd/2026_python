@@ -1,0 +1,7 @@
+Amy 85
+Peter 100
+Hank 20
+Sandy 90
+Mary 15
+Bao 50
+Leo 77
