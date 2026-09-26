@@ -1550,29 +1550,79 @@
 #     print("The tallest is %s with %.2fcm"%(max(H, key=H.get), max(H.values())))
 #     print("The heaviest is %s with %.2fkg"%(max(w, key=w.get), max(w.values())))
 
+# D=input()
+# a=input()
+# with open(D,"r+",encoding="utf-8") as f:
+#     f.seek(0)
+#     r=f.read()
+#     print("=== Before the deletion")
+#     print(r)
+#     print("=== After the deletion")
+#     f.seek(0)
+#     x=f.read()
+#     x=x.replace(a," ")
+#     print(x)
+# with open(D,"w",encoding="utf-8") as f:
+#     f.write(x)
 
-D=input()
-a=input()
-with open("data.txt","r",encoding="utf-8") as f:
-    f.seek(0)
-    a=f.read()
-    print("=== Before the deletion")
-    print(a)
-    print("=== After the deletion")
-    f.seek(0)
+# F=input()
+# s1=input()
+# s2=input()
+# with open(F,"r",encoding="utf-8") as f:
+#     r=f.read()
+#     print("=== Before the replacement")
+#     print(r)
+#     print("=== After the replacement")
+#     r=r.replace(s1,s2)
+#     print(r)
+# with open(F,"w",encoding="utf-8") as f:
+#     f.write(r)
+
+# F=input()
+# with open(F,"r",encoding="utf-8") as f:
+#     r=f.read()
+#     f.seek(0)
+#     lines=f.readlines()
+#     print(len(lines),"line(s)")
+#     print(len(r.split()),"word(s)")
+#     s=0
+#     for i in r: 
+#         if (len(i.strip()))==1:
+#             s+=1
+#     print(s,"character(s)")
+
+# F=input()
+# T=int(input())
+# with open(F,"r",encoding="utf-8") as f:
+#     r=f.read()
+#     r=r.strip().split(" ")
+#     set1=sorted(set(r))
+#     al={}
+#     for i in set1:
+#         al[i]=r.count(i)
+#     for i in al:
+#         if al[i]==T:
+#             print(i)
+
+# with open("data.dat","r+",encoding="utf-8") as f:
+#     for i in range(5):
+#         f.write(input()+"\n")
+#         f.write("\n")
+#     f.seek(0)
+#     r=f.read()
+#     print("The content of \"data.dat\":")
+#     print(r)
+
+with open("read.dat","r+",encoding="utf-8") as f:
     lines=f.readlines()
-    f.seek(0)
-    with open("data.txt","w",encoding="utf-8") as f:
-        for i in lines:
-            i=i.split(" ")
-            for i in i:
-                if i.strip()!=a:
-                    f.write(i+" ",end="")
-                f.write("\n")
-    with open("data.txt","r",encoding="utf-8") as f:
+    for i in lines:
+        print(i+"\n",end="")
         f.seek(0)
-        print(f.read())
-    
+        r=f.read()
+    print("Number of males: %d"%(r.count(" 1 ")))
+    print("Number of females: %d"%(r.count(" 0")))
+
+
 
 
 
