@@ -288,35 +288,69 @@ import numpy as np # 習慣上用 np 當縮寫
 # print("Row 2 Sum:", np.sum(u2[2,:]))
 # print("Row 3 Sum:", np.sum(u2[3,:]))
 
-pswd = input()
-pswd = pswd.split(" ")
-P=np.array([8,1,1,1])
-k=[]
-for i in pswd:
-    L=len(i)
-    A=0
-    M=0
-    S=0
-    for u in i:
-        if 'A'<=u<='Z':
-            A+=1
-        if u in '0123456789':
-            M+=1
-        if 'A'<=u<='Z' and u not in '0123456789':
-            S+=1
-    K=[L, A, M, S]
-    k.append(K)
-k=np.array(k)
-k=k.reshape(4,4)
-for i in k:
-    if i[0]>=P[0] and i[1]>=P[1] and i[2]>=P[2] and i[3]>=P[3]:
-        print(i)
+# pswd = input()
+# pswd = pswd.split(" ")
+# P=np.array([8,1,1,1])
+# k=[]
+# for i in pswd:
+#     L=len(i)
+#     A=0
+#     M=0
+#     S=0
+#     for u in i:
+#         if 'A'<=u<='Z':
+#             A+=1
+#         if u in '0123456789':
+#             M+=1
+#         if 'A'<=u<='Z' and u not in '0123456789':
+#             S+=1
+#     K=[L, A, M, S]
+#     k.append(K)
+# k=np.array(k)
+# k=k.reshape(4,4)
+# for i in k:
+#     if i[0]>=P[0] and i[1]>=P[1] and i[2]>=P[2] and i[3]>=P[3]:
+#         print(i)
 
+# f=open("fixed_log.txt","w")
+# f.close()
+# with open("server.log","r") as f:
+#     lines=f.readlines()
+#     u=[]
+#     T=0
+#     for i in lines:
+#         i=i.strip().split(" ")
+#         line=np.array(i)
+#         if line[1]=="404" or line[1]=="500":
+#             T+=1
+#             u.append(int(line[2]))
+#             M=sum(u)/T
+#             if int(line[2])==max(u):
+#                 line[2]=int(M)
+#             with open("fixed_log.txt","a")as f:
+#                 for i in line:
+#                     f.write(str(i)+" ")
+#                 f.write("\n")
+#         else:
+#             with open("fixed_log.txt","a")as f:
+#                 for i in line:
+#                     f.write(str(i)+" ")
+#                 f.write("\n")
+# print("Error Mean Time: %.1f"%(M))
+# print("File fixed_log created successfully.")
 
+# N=int(input())
+# Z=np.ones((N,N),dtype=float)
+# Z[1:-1,1:-1]=0
+# print(Z)
 
+# N=int(input())
+# Z=np.zeros((N,N),dtype=float)
+# for i in range(N):
+#     Z[i,i]=1
+#     Z[i,-i+N-1]=1
+# print(Z)
 
-
-#
 
 
 
