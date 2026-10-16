@@ -112,6 +112,215 @@ import numpy as np # 習慣上用 np 當縮寫
 # print(np.sum(A))
 # print(np.mean(A))
 
+# prices=np.array([100,250,400,50])
+# quantities=np.array([3,2,1,10])
+# print("各商品總價:",prices*quantities)
+# print("總消費金額:",np.sum(prices*quantities))
+
+# 一維陣列取值
+# 和 Python 列表類似，使用 "索引"
+# arr = np.array([10,20,30,40,50])
+# print(arr[0]) # 10
+# print(arr[2]) # 30
+# print(arr[-1]) # 取最後一個元素 50
+
+# 二維陣列取值
+# 格式 : arr[列索引, 行索引]
+# mat = np.array([[1,2,3],
+#                 [4,5,6],
+#                 [7,8,9]])
+# print(mat[0,0]) # 1
+# print(mat[1,2]) # 6
+# print(mat[2,-1]) # 9
+
+# 切片
+# 和 Python 列表類似，但可以同時對"列"和"行"取範圍
+# arr = np.array([10,20,30,40,50])
+# mat = np.array([[1,2,3],
+#                 [4,5,6],
+#                 [7,8,9]])
+# print(arr[1:4])     # [20 30 40] 取索引 1~3 的元素
+# print(mat[0:2,1:3]) # [[2 3]
+#                     #  [5 6]]
+# print(mat[:,0])     # [1 4 7] 
+# print(mat[1,:])     # [4 5 6] 
+
+# arr = np.array([12,25,38,41,55,63,70,84])
+# print("切片結果:",arr[2:6])
+# print("平均值:",np.mean(arr[2:6]))
+# print("總和:",np.sum(arr[2:6]))
+
+# N=np.array([[1,2,3],
+#             [4,5,6],
+#             [7,8,9]])
+# n=N[1:3,1:3]
+# print("右下角矩陣乘以10:\n",n*10)
+# print("子矩陣總和:",np.sum(n*10))
+
+# Z=np.zeros((4,4),dtype=int)
+# Z[1:3,1:3]=1
+# print(Z)
+# print("矩陣總和:",np.sum(Z))
+
+# def create_matrix(n):
+#     N=np.zeros((n,n),dtype=int)
+#     for i in range(n):
+#         N[i,i]=i+1
+#     print("Shape:",N.shape)
+#     print("Sum:",np.sum(N))
+#     print(N)
+# n=int(input())
+# create_matrix(n)
+
+# np.eye(N,M = None, k = 0, dtype = float)
+# N (必填) : 輸出矩陣的列數
+# M (選填) : 輸出矩陣的行數，若未填則為預設 N X N 的方陣
+# k (選填) : 對角線的偏移量
+# dtype (選填) : 輸出矩陣的資料型態，預設為 float 也可以指定為 int
+# 會建立單位矩陣或對角矩陣，對角線元素為 1 的二維陣列
+# I = np.eye(3) # 3 X 3
+# print(I)
+
+# 建立 2 列 4 行 (2X4) 的矩陣
+# rect_eye = np.eye(2,4,dtype=int)
+# print(rect_eye) 
+
+# k = 1 : 對角線往右上偏移一格
+# upper = np.eye(4, k=1, dtype=int)
+# print("k = 1 (右上偏移):")
+# print(upper)
+
+# k = -1 : 對角線往左下偏移一格
+# lower = np.eye(4, k=-1, dtype=int)
+# print("\nk = -1 (左下偏移):")
+# print(lower)
+
+# scores = np.array([55, 88, 92, 45, 73, 60, 100])
+# 1. 產生布林遮罩 (Boolean Mask)
+# pass_mask = scores >= 60
+# print("及格遮罩:", pass_mask) # [False True True False True True True]
+# 2. 使用遮罩取出元素
+# passed_scores = scores[pass_mask]
+# print("及格分數:", passed_scores) # [ 88  92  73  60 100]
+# 3. 複合條件 (&:and、|:or、~:not)
+# 篩選出 60 到 89 分之間的成績
+# middle_mask = (scores >= 60) & (scores < 90)
+# print("介於 60~89 分:", scores[middle_mask])
+# 4. 遮罩修改值 (將不及格的補分至 60)
+# scores[scores < 60] = 60
+# print("補分後的成績:", scores) # [60 88 92 60 73 60 100]
+
+# a = np.array([1, 2, 3, 4, 5])
+# np.where 用來根據條件尋找陣列索引或進行條件判斷與數值替換
+# np.where(條件, x, y)
+# 符合條件回傳 x，否則 y
+# result = np.where(a > 3, a, 0)
+# print(result)        # [0 0 0 4 5]
+# 取得符合條件的索引
+# idx = np.where(a > 3)
+# print(idx)           # (array([3, 4]),)
+
+# a=int(input())
+# b=int(input())
+# X=np.arange(a,b+1)
+# even_mask = X % 2 == 0
+# even_numbers = X[even_mask]
+# print("偶數:", even_numbers)
+# odd_mask = X % 2 == 1
+# odd_numbers = X[odd_mask]
+# print("奇數:", odd_numbers)
+
+# p=np.array([55, 80, 72, 90, 45, 60, 30, 100, 85, 66])
+# print("平均: ",np.mean(p))
+# print("及格: ",(p[p>=60]))
+# print("最高: ",(np.max(p)))
+# print("最低: ",(np.min(p)))
+# print("60~80: ",(p[(p>=60)&(p<=80)]))
+
+# a=input()
+# b=input()
+# a=np.array(a.split(" "), dtype=int)
+# b=np.array(b.split(" "), dtype=int)
+# print("各項金額: ",a*b)
+# print("折抵後金額: ",np.where(a*b > 100, (a*b)-10, a*b))
+# print("總應付金額: ",np.sum(np.where(a*b > 100, (a*b)-10, a*b)))
+
+# a=input()
+# a=np.array(a.split(" "), dtype=int)
+# a=np.where((a%3==0)&(a%2!=0), a*10, a)
+# print(a)
+
+# a=input()
+# a = np.array(a.split(" "), dtype=int)
+# M=np.mean(a)
+# a=np.where(a > M, 1, 0)
+# a=a.reshape(3,3)
+# print(a)
+
+# a= input().title()
+# a= np.array(a.split(" "))
+# L=[]
+# for i in a:
+#     L.append(len(i))
+# u = np.array(L)
+# M_u = (4 <= u) & (u <= 8)
+# n_a = a[M_u]
+# print(n_a)
+
+# a= input()
+# a= np.array(a.split(" "), dtype=float)
+# u=np.where(a>0,a**0.5,0)
+# print(u)
+# a[a<=0]=0.0
+# a=a**0.5
+# print(a)
+
+# a = input()
+# a = np.array(a.split(" "), dtype=float)
+# u = np.where(a > 200, a*0.8, a)
+# M=np.mean(a[a>0])
+# print(round(M))
+# u2= np.where(a <0, round(M), u)
+# u2=np.reshape(u2, (4,4))
+# print(u2)
+# print("Row 0 Sum:", np.sum(u2[0,:]))
+# print("Row 1 Sum:", np.sum(u2[1,:]))
+# print("Row 2 Sum:", np.sum(u2[2,:]))
+# print("Row 3 Sum:", np.sum(u2[3,:]))
+
+pswd = input()
+pswd = pswd.split(" ")
+P=np.array([8,1,1,1])
+k=[]
+for i in pswd:
+    L=len(i)
+    A=0
+    M=0
+    S=0
+    for u in i:
+        if 'A'<=u<='Z':
+            A+=1
+        if u in '0123456789':
+            M+=1
+        if 'A'<=u<='Z' and u not in '0123456789':
+            S+=1
+    K=[L, A, M, S]
+    k.append(K)
+k=np.array(k)
+k=k.reshape(4,4)
+for i in k:
+    if i[0]>=P[0] and i[1]>=P[1] and i[2]>=P[2] and i[3]>=P[3]:
+        print(i)
+
+
+
+
+
+#
+
+
+
+
 
 
 

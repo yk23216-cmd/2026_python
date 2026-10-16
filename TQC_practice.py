@@ -1613,14 +1613,14 @@
 #     print("The content of \"data.dat\":")
 #     print(r)
 
-with open("read.dat","r+",encoding="utf-8") as f:
-    lines=f.readlines()
-    for i in lines:
-        print(i+"\n",end="")
-        f.seek(0)
-        r=f.read()
-    print("Number of males: %d"%(r.count(" 1 ")))
-    print("Number of females: %d"%(r.count(" 0")))
+# with open("read.dat","r+",encoding="utf-8") as f:
+#     lines=f.readlines()
+#     for i in lines:
+#         print(i+"\n",end="")
+#         f.seek(0)
+#         r=f.read()
+#     print("Number of males: %d"%(r.count(" 1 ")))
+#     print("Number of females: %d"%(r.count(" 0")))
 
 
 
