@@ -284,12 +284,12 @@
 # f.close()
 
 # 範例:讀取內容後，從頭覆蓋部分文字
-f=open("r_plus.txt","r+",encoding="utf-8")
-content = f.read()
-print("原始內容: ", content)
-f.seek(0)
-f.write("NEW")
-f.close()
+# f=open("r_plus.txt","r+",encoding="utf-8")
+# content = f.read()
+# print("原始內容: ", content)
+# f.seek(0)
+# f.write("NEW")
+# f.close()
 
 
 
