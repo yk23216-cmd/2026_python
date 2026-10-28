@@ -203,16 +203,152 @@
 # res=minimize_scalar(ob)
 # print("x = %.2f, y = %.2f"%(res.x,res.fun))
 
+# from scipy.optimize import minimize_scalar
+# def f(x):
+#     return x**3-3*x   # 有兩個極值點
+# # 不指定範圍 : 可能找到任意局部最小值
+# print("無範圍 : ",minimize_scalar(f).x)
+# # 指定範圍 (0, 3) : 只在此區間找
+# res = minimize_scalar(f,bounds=(0,3),method="bounded")
+# print("限制範圍 (0, 3) : ",res.x)
+# # 指定範圍 (-3, 0)
+# res = minimize_scalar(f,bounds=(-3,0),method="bounded")
+# print("限制範圍 (-3, 0) : ",res.x)
+
+# from scipy.optimize import minimize_scalar
+# def f(x):
+#     return x**3-3*x+5
+# res=minimize_scalar(f,bounds=(0,2),method="bounded")
+# print("Min x = %.1f"%(res.x))
+
+# from scipy.optimize import minimize_scalar
+# def f(x):
+#     return 3*(x**2)-60*x+500
+# res=minimize_scalar(f)
+# print("Optimal x: %d, Min Cost: %d"%(round(res.x),res.fun))
+
+# from scipy.optimize import minimize_scalar
+# import numpy as np
+# def f(x):
+#     return (np.abs(x-7.5))+3
+# print("Minimum value: %.2f"%(minimize_scalar(f).fun))
+
+# from scipy.optimize import minimize
+# 把原本的單體變數問題用 minimize 重寫
+# f(x) = x^2 - 6x + 9
+# def ob(v):
+#     # v 是陣列，即使只有一個變數 
+#     x = v[0]
+#     return x**2 - 6*x + 9
+# minimize 需要初始猜測 x0 (用列表形式)
+# res = minimize(ob, x0=[0])
+# print("x = ",res.x)           # x =  [3.00000003]
+# print("min = ",res.fun)       # min =  0.0
+# print("成功?",res.success)    # 成功? True
+# print("迭代次數 : ",res.nit)   # 迭代次數 :  2
+
+# from scipy.optimize import minimize
+# 雙變數 : f(x, y) = (x-1)^2 + (y+2)^2
+# 最小值在 (1, -2)，最小值為 0
+# def f(v):
+#     x, y = v    # 直接把 v 拆成兩個變數 (python 解構方法)
+#     return  (x-1)**2 + (y+2)**2
+# res = minimize(f,x0=[0,0])  # 從 (0, 0) 出發
+# print("最佳位置 : ",res.x)   # [ 0.99999998 -2.00000003]
+# print("最小值 : ",res.fun)  # 1.1411716670850257e-15
+
+# python 解構方法
+# 原本方法(一個一個取)
+# v = [1, 2]
+# x=v[0]
+# y=v[1]
+# 解構方法(一行搞定)
+# v = [1, 2]
+# x, y = v
+# print(x) # 1
+# print(y) # 2
+
+# from scipy.optimize import minimize
+# f(x, y, z) = x^2 + y^2 + z^2 -2x - 4y - 6z
+# 最小值在 (1, 2, 3)
+# def f(v):
+#     x,y,z=v
+#     return x**2+y**2+z**2-2*x-4*y-6*z
+# res = minimize(f,x0=[0,0,0])
+# print("位置 : ",list(map(round,res.x))) # 位置 :  [1, 2, 3]
+# print("最小值 : ",round(res.fun))       # 最小值 :  -14
+
+# import numpy as np
+# from scipy.optimize import minimize
+# 這個函數有兩個局部最小值
+# def f(x):
+#     return x[0]**4 - 4 * x[0] **2 + x[0]
+# 從不同初始點出發
+# for x0 in [-2, 0, 2]:
+#     res=minimize(f,x0=[x0])
+#     print(f"從 x0 = {x0} 出發 => 找到 x = {res.x[0]:.4f}, f(x) = {res.fun:.4f}")
+#     # 從 x0 = -2 出發 => 找到 x = -1.4730, f(x) = -5.4442
+#     # 從 x0 = 0 出發 => 找到 x = -1.4730, f(x) = -5.4442
+#     # 從 x0 = 2 出發 => 找到 x = 1.3470, f(x) = -2.6186
+
+# from scipy.optimize import minimize
+# def f(v):
+#     x,y=v
+#     return (x-5)**2+(y-3)**2
+# res = minimize(f,x0=[0,0])
+# print("x = ",res.x)
+# print("min = ",res.fun)
+
+# from scipy.optimize import minimize
+# n=input()
+# a,b,c=list(map(int,n.split(" ")))
+# def f(v):
+#     x,y=v
+#     return (x-a)**2+(y-b)**2+c
+# res=minimize(f,x0=[0,0])
+# print("x = ",res.x)
+# print("min = ",res.fun)
+
+# from scipy.optimize import minimize
+# import numpy as np
+# def f(v):
+#     x,y,z=v
+#     return x**2+2*y**2+3*z**2-4*x-8*y-12*z
+# res=minimize(f,x0=[0,0,0])
+# print("x = ",np.round(res.x,4))
+# print("min = %.4f"%(res.fun))
+
+# from scipy.optimize import minimize_scalar
+# 1. 這是原本的目標函數：開口向下的拋物線 f(x) = -(x - 5)^2 + 20
+# 我們要找出它的「最高點」
+# def original_func(x):
+#     return - (x - 5)**2 + 20
+# 2. 建立一個「顛倒版」的函數（把原本的函式乘以負號，讓最高點變成谷底）
+# def negative_func(x):
+#     return -original_func(x)
+# 3. 用 minimize_scalar 去找出這個顛倒版函數的「最低點」
+# res = minimize_scalar(negative_func)
+# 4. 輸出結果
+# print("最高點發生的 x 位置:", res.x)
+# 注意：因為我們剛剛求的是負函數的最小值，所以要把 res.fun 加上負號變回來！
+# print("最高點的最高數值 (y):", -res.fun)
+
+# from scipy.optimize import minimize_scalar
+# 1. 直接用 lambda 定義原本的函數，並在外面加上負號
+# 這樣 minimize_scalar 找出來的就會直接是最低點，對應到原本函數的最高點
+# res = minimize_scalar(lambda x: -(-(x - 5)**2 + 20))
+# 2. 輸出結果
+# print("最高點發生的 x 位置:", res.x)
+# print("最高點的最高數值 (y):", -res.fun)
+
+# from scipy.optimize import minimize_scalar
+# res = minimize_scalar(lambda x : -(-(x-3)**2+25))
+# print("最高點發生的 x 位置: ",res.x)
+# print("最高點的最高數值(y): ",-res.fun)
+
 from scipy.optimize import minimize_scalar
-def f(x):
-    return x**3-3*x   # 有兩個極值點
-# 不指定範圍 : 可能找到任意局部最小值
-print("無範圍 : ",minimize_scalar(f).x)
-# 指定範圍 (0, 3) : 只在此區間找
-res = minimize_scalar(f,bounds=(0,3),method="bounded")
-print("限制範圍 (0, 3) : ",res.x)
-# 指定範圍 (-3, 0)
-res = minimize_scalar(f,bounds=(-3,0),method="bounded")
-print("限制範圍 (-3, 0) : ",res.x)
+import numpy as np
+res = minimize_scalar(lambda x : -(np.sin(x)),bounds=(0,np.pi),method="bounded")
+print("Max x = %.3f, Max y = %.3f"%(res.x,-res.fun))
 
 
