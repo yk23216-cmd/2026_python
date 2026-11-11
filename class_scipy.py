@@ -346,9 +346,176 @@
 # print("最高點發生的 x 位置: ",res.x)
 # print("最高點的最高數值(y): ",-res.fun)
 
-from scipy.optimize import minimize_scalar
-import numpy as np
-res = minimize_scalar(lambda x : -(np.sin(x)),bounds=(0,np.pi),method="bounded")
-print("Max x = %.3f, Max y = %.3f"%(res.x,-res.fun))
+# from scipy.optimize import minimize_scalar
+# import numpy as np
+# res = minimize_scalar(lambda x : -(np.sin(x)),bounds=(0,np.pi),method="bounded")
+# print("Max x = %.3f, Max y = %.3f"%(res.x,-res.fun))
+
+# from scipy.optimize import minimize_scalar
+# res=minimize_scalar(lambda x: -(-2*x**2+40*x-50))
+# print("Optimal discount x = %d, Max Revenue = %d"%(res.x,-res.fun))
+
+# from scipy.optimize import minimize_scalar
+# import numpy as np
+# v=30
+# g=9.80665
+# res=minimize_scalar(lambda x: -(v**2*np.sin(2*x)/g))
+# print("Best Angle: %.2f deg, Max Range: %.2f m"%(np.degrees(res.x),-res.fun))
+
+# from scipy.optimize import root_scalar
+# ===== 範例：解 x^2 - 4 = 0 =====
+# 1. 定義方程式 f(x) = x^2 - 4 = 0
+# def func(x):
+#     return x ** 2 - 4
+# 2. 在區間 [0, 5] 內尋找根
+# brentq演算法，運作方式是透過不斷地「猜測數值」和「縮小搜尋區間」（疊代）
+# 去找出讓 f(x) 趨近於 0 的點
+# res = root_scalar(func, bracket=[0, 5], method='brentq')
+# 3. 輸出方程式的根
+# print("方程式的根:", round(res.root))  # 方程式的根: 1.999999999999977
+
+# from scipy.optimize import root_scalar
+# 1. 定義方程式 f(x) = x^3 - 2x - 5
+# def target_func(x):
+#     return x**3 - 2*x - 5
+# 2. 使用 brentq 方法在 [2, 3] 內求根
+# res = root_scalar(target_func, bracket=[2, 3], method='brentq')
+# 3. 檢視詳細結果物件
+# print("是否成功收斂:", res.converged)
+# print("疊代次數:", res.iterations)
+# print("求得的根 x =", res.root)
+# print("驗證 f(root) =", target_func(res.root)) # 應該要非常接近 0
+
+# import numpy as np
+# from scipy.optimize import root_scalar
+# 結合 lambda
+# 在區間  [0,1] 內尋找 cos(x) = 0 的交點
+# res = root_scalar(lambda x: np.cos(x)-x, bracket=[0, 1], method='brentq')
+# print("交點 x =", res.root)
+
+# import numpy as np
+# from scipy.optimize import root_scalar
+# res=root_scalar(lambda x: x**3-27, bracket=[1, 5], method='brentq')
+# print("Root: %.3f"%(round(res.root, 3)))
+
+# from scipy.optimize import root_scalar
+# n=input().split(" ")
+# res=root_scalar(lambda x: int(n[0])*x+int(n[1]), bracket=[-100, 100], method='brentq')
+# print("Root: %.2f"%(round(res.root, 2)))
+
+# import math
+# from scipy.optimize import root_scalar
+# res=root_scalar(lambda x: math.exp(x)-5, bracket=[1, 2], method='brentq')
+# print("Root: %.3f"%(round(res.root, 3)))
+
+# from scipy.optimize import minimize_scalar
+# res=minimize_scalar(lambda x: -(100*x-x**2-(20*x+500)))
+# print("Max Profit x = %d, Profit = %d"%(round(res.x),-res.fun))
+# from scipy.optimize import root_scalar
+# res2=root_scalar(lambda x: 100*x-x**2-(20*x-500), bracket=[0, 100], method='brentq')
+# print("Break-even root = %.2f"%(round(res2.root, 2)))
+
+# import math
+# from scipy.optimize import root_scalar
+# res=root_scalar(lambda x: x**2-4, bracket=[1, 3], method='brentq')
+# res2=root_scalar(lambda x: x**3-8, bracket=[1, 3], method='brentq')
+# res3=root_scalar(lambda x: math.log(x)-1, bracket=[2, 3], method='brentq')
+# s=0
+# for i in [res, res2, res3]:
+#     if i.root >2:
+#         s+=i.root
+# print("Sum of filtered roots: %.2f"%(round(s, 2)))
+
+# import numpy as np
+# from scipy import stats
+# 1. 準備一組學生的考試成績樣本
+# scores = np.array([72, 75, 68, 80, 85, 78, 90, 74])
+# 2. 進行單樣本 t 檢定，假設母體（或及格標準）平均數為 70
+# 回傳值包含 t 統計量 (statistic) 與 p 值 (pvalue)
+# t_stat, p_val = stats.ttest_1samp(scores, popmean=70)
+# print("學生平均分:", scores.mean())
+# print("t 統計量:", t_stat)
+# print("p 值:", p_val)
+# 3. 根據顯著水準 alpha = 0.05 進行假設檢定判斷
+# if p_val < 0.05:
+#     print("拒絕虛無假設：全班平均顯著異於 70 分")
+# else:
+#     print("接受虛無假設：與 70 分沒有顯著差異")
+
+# import numpy as np
+# from scipy import stats
+# p=np.array([1.2,0.8,1.5,1.1,0.9,1.3])
+# t_stat, p_val = stats.ttest_1samp(p, popmean=1)
+# print("p-value: ", round(p_val, 4))
+
+# import numpy as np
+# from scipy import stats
+# L=input().split(" ")
+# p=np.array(list(map(int, L)))
+# t_stat, p_val = stats.ttest_1samp(p, popmean=75)
+# if p_val < 0.05 and p.mean() != 75:
+#     print("Significant High")
+# else:
+#     print("Not Significant")
+
+# import numpy as np
+# from scipy import stats
+# data = np.array([52.1, 49.8, 51.0, 50.5, 49.2, 50.8])
+# t_stat, p_val = stats.ttest_1samp(data, popmean=50.0)
+# res = np.array([t_stat, p_val])
+# res_rounded = np.round(res, 3)
+# print(res_rounded)
+
+# import numpy as np
+# from scipy import stats
+# 1. 準備兩組獨立的樣本資料
+# group_a = np.array([85, 90, 88, 92, 86, 89])
+# group_b = np.array([75, 78, 72, 80, 76, 74])
+# 2. 進行獨立樣本 t 檢定
+# t_stat, p_val = stats.ttest_ind(group_a, group_b)
+# print("獨立樣本 t 統計量:", t_stat)
+# print("p 值:", p_val)
+# 3. 判斷兩組表現是否有顯著差異
+# if p_val < 0.05:
+#     print("兩組之間存在顯著差異")
+
+# import numpy as np
+# from scipy import stats
+# # 兩組樣本數不同也可以比較
+# a=np.array([1,2,3,4,5])
+# b=np.array([6,7,8,9,10,11,12])
+# t,p=stats.ttest_ind(a,b)
+# print(t,p)
+
+# import numpy as np
+# from scipy import stats
+# a=np.array([45,48,50,47,49])
+# b=np.array([40,42,41,44,43])
+# t,p=stats.ttest_ind(a,b)
+# print("p-value: %.4f"%(p))
+
+# import numpy as np
+# from scipy import stats
+# L=input().split(" ")
+# a=np.array(list(map(int,L)))
+# L2=input().split(" ")
+# b=np.array(list(map(float,L2)))
+# t,p=stats.ttest_ind(a,b)
+# if p<0.05 :
+#     print("Difference")
+# else:
+#     print("No Difference")
+
+# import numpy as np
+# from scipy import stats
+# 1. 準備同一群學生「特訓前」與「特訓後」的成績（具備嚴格配對關係）
+# before = np.array([65, 70, 72, 68, 80, 75])
+# after = np.array([78, 85, 80, 82, 88, 84])
+# 2. 進行配對樣本 t 檢定
+# t_stat, p_val = stats.ttest_rel(before, after)
+# print("配對樣本 t 統計量:", t_stat)
+# print("p 值:", p_val)
+# if p_val < 0.05:
+#     print("特訓前後有顯著進步差異")
 
 
