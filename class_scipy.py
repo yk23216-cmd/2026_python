@@ -519,3 +519,182 @@
 #     print("特訓前後有顯著進步差異")
 
 
+
+
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# # 只給 y, x 自動用索引
+# y = np.array([10,20,15,25])
+# plt.plot(y) # x 自動為 [0, 1, 2, 3]
+# plt.show() # 顯示圖表
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x= np.linspace(0,2*np.pi,100)
+# 畫兩條線，各自給 label
+# label 是寫在 plot() 裡，legend() 才會去讀它
+# plt.plot(x,np.sin(x),label="sin(x)")
+# plt.plot(x,np.cos(x),label="cos(x)")
+# 加上標題與軸標籤
+# plt.title("Sine and Cosine")
+# plt.xlabel("x (radians)")
+# plt.ylabel("y")
+# plt.legend()  # 顯示圖例
+# plt.grid()    # 顯示格線
+# plt.show()    
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# 設定中文字型(依作業系統選擇可用的)
+# plt.rcParams["font.sans-serif"] = ["Microsoft YaHei","SimHei","Arial Unicode MS"]  
+# 設定負號正常顯示(否則負號會變成方塊)
+# plt.rcParams["axes.unicode_minus"] = False
+# 之後畫圖就能使用中文了
+# plt.plot([1,2,3],[-1,-2,-3])
+# plt.title("測試中文範例")
+# plt.show()
+
+# plt.figure(figsize=寬, 高)) 控制圖表大小 (單位為英吋)
+# 建立一個 8x5 英吋的圖表
+# plt.figure(figsize=(8,5))
+# plt.plot([1,2,3],[1,4,9])
+# plt.title("自訂大小")
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.array([1,2,3,4,5])
+# y = np.array([100,105,102,110,115])
+# mi= np.argmax(y)
+# mp=y[mi]
+# mt=x[mi]
+# plt.plot(x,y,color="r",marker="o")
+# plt.title("Max Price: %d at Time %d"%(mp,mt))
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# with open("stock_trend.txt","r") as f:
+#     f.seek(0)
+#     t=np.array(f.readline().strip().split(" "),dtype=float)
+#     v=np.array(f.readline().strip().split(" "),dtype=float)
+#     print("Mean: %.2f"%np.mean(v))
+#     print("Std: %.2f"%np.std(v))
+#     plt.plot(t,v)
+#     plt.show()
+   
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.linspace(-3,3,50)
+# y=2*x**2-4*x+1
+# plt.plot(x,y)
+# mi=np.argmin(y)
+# my=y[mi]
+# mx=x[mi]
+# print("Min Y: %.2f at X: %.2f"%(my,mx))
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.linspace(0,2*np.pi,50)
+# y1=np.sin(x)
+# y2=np.cos(x)
+# plt.plot(x,y1,label="sin")
+# plt.plot(x,y2,label="cos")
+# plt.legend()  
+# print("Max Absolute Difference: %.3f"%((np.max(np.abs(y1-y2)))))
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# x=[1,2,4,6,8,1,2,9,3]
+# y=[5,7,2,3,1,4,6,5,8]
+# plt.title("Simple Plot")
+# plt.xlabel("x")
+# plt.ylabel("y")
+# plt.scatter(x,y,c="r") # 繪製散佈圖
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# 模擬 100 位學生的身高與體重
+# np.random.seed(42)
+# height=np.random.normal(170,10,100) # 平均 170，標準差 10
+# weight=np.random.normal(65,8,100)   # 平均 65，標準差 8
+# plt.scatter(height,weight)          # 畫散佈圖
+# plt.xlabel("Height (cm)")
+# plt.ylabel("Weight (kg)")
+# plt.title("Height vs Weight")
+# plt.show()
+
+
+# import numpy as np
+# 1. 回傳單一隨機浮點數
+# print(np.random.randn())
+# 2. 建立一維陣列(如:包含五個隨機數)
+# print(np.random.randn(5))
+# 3. 建立二維矩陣(如:2 行 4 列的矩陣)
+# print(np.random.randn(2,4))
+
+# import numpy as np
+# 第一次: 設定種子為 42
+# np.random.seed(42)
+# print("第一組: ",np.random.randn(3))
+# 第二次: 除新設定相同的種子 42
+# np.random.seed(42)
+# print("第二組: ", np.random.randn(3))
+# 第三次: 不設定種子(或換號碼)，結果就會不同
+# print("第三組: ",np.random.randn(3))
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# np.random.seed(0)
+# x=np.random.randn(100)
+# y=np.random.randn(100)
+# 可以用遮罩把資料分成兩群，用不同的顏色畫在同一張圖上
+# 分成 [x>0] 與 [x<=0]
+# mask_pos=x>0
+# mask_neg=~mask_pos
+# plt.scatter(x[mask_pos],y[mask_pos],c="blue",label="x>0")
+# plt.scatter(x[mask_neg],y[mask_neg],c="red",label="x<=0")
+# plt.legend()
+# plt.title("Masked Scatter")
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.array(input().split(" "))
+# y=np.array(input().split(" "))
+# plt.scatter(x,y)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# np.random.seed(42)
+# x=np.random.randn(200)
+# y=np.random.randn(200)
+# mask_p=x>0
+# mask_n=~mask_p
+# plt.scatter(x[mask_p],y[mask_p],c="green",label="x>0")
+# plt.scatter(x[mask_n],y[mask_n],c="orange",label="x<=0")
+# plt.legend()
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# np.random.seed(0)
+# x=np.arange(50)
+# y=x+np.random.randn(50)*5
+# plt.scatter(x,y,s=100,alpha=0.6)
+# plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import constants as C
+r=np.arange(1,11)
+a=C.pi*r**2
+plt.scatter(r,a)
+plt.xlabel("Radius")
+plt.ylabel("Area")
+plt.title("Circle Area vs Radius")
+plt.show()
