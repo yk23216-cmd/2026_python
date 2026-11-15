@@ -351,9 +351,172 @@
 # res = minimize_scalar(lambda x : -(np.sin(x)),bounds=(0,np.pi),method="bounded")
 # print("Max x = %.3f, Max y = %.3f"%(res.x,-res.fun))
 
+# from scipy.optimize import minimize_scalar
+# res=minimize_scalar(lambda x: -(-2*x**2+40*x-50))
+# print("Optimal discount x = %d, Max Revenue = %d"%(res.x,-res.fun))
 
+# from scipy.optimize import minimize_scalar
+# import numpy as np
+# v=30
+# g=9.80665
+# res=minimize_scalar(lambda x: -(v**2*np.sin(2*x)/g))
+# print("Best Angle: %.2f deg, Max Range: %.2f m"%(np.degrees(res.x),-res.fun))
 
+# from scipy.optimize import root_scalar
+# ===== 範例：解 x^2 - 4 = 0 =====
+# 1. 定義方程式 f(x) = x^2 - 4 = 0
+# def func(x):
+#     return x ** 2 - 4
+# 2. 在區間 [0, 5] 內尋找根
+# brentq演算法，運作方式是透過不斷地「猜測數值」和「縮小搜尋區間」（疊代）
+# 去找出讓 f(x) 趨近於 0 的點
+# res = root_scalar(func, bracket=[0, 5], method='brentq')
+# 3. 輸出方程式的根
+# print("方程式的根:", round(res.root))  # 方程式的根: 1.999999999999977
 
+# from scipy.optimize import root_scalar
+# 1. 定義方程式 f(x) = x^3 - 2x - 5
+# def target_func(x):
+#     return x**3 - 2*x - 5
+# 2. 使用 brentq 方法在 [2, 3] 內求根
+# res = root_scalar(target_func, bracket=[2, 3], method='brentq')
+# 3. 檢視詳細結果物件
+# print("是否成功收斂:", res.converged)
+# print("疊代次數:", res.iterations)
+# print("求得的根 x =", res.root)
+# print("驗證 f(root) =", target_func(res.root)) # 應該要非常接近 0
+
+# import numpy as np
+# from scipy.optimize import root_scalar
+# 結合 lambda
+# 在區間  [0,1] 內尋找 cos(x) = 0 的交點
+# res = root_scalar(lambda x: np.cos(x)-x, bracket=[0, 1], method='brentq')
+# print("交點 x =", res.root)
+
+# import numpy as np
+# from scipy.optimize import root_scalar
+# res=root_scalar(lambda x: x**3-27, bracket=[1, 5], method='brentq')
+# print("Root: %.3f"%(round(res.root, 3)))
+
+# from scipy.optimize import root_scalar
+# n=input().split(" ")
+# res=root_scalar(lambda x: int(n[0])*x+int(n[1]), bracket=[-100, 100], method='brentq')
+# print("Root: %.2f"%(round(res.root, 2)))
+
+# import math
+# from scipy.optimize import root_scalar
+# res=root_scalar(lambda x: math.exp(x)-5, bracket=[1, 2], method='brentq')
+# print("Root: %.3f"%(round(res.root, 3)))
+
+# from scipy.optimize import minimize_scalar
+# res=minimize_scalar(lambda x: -(100*x-x**2-(20*x+500)))
+# print("Max Profit x = %d, Profit = %d"%(round(res.x),-res.fun))
+# from scipy.optimize import root_scalar
+# res2=root_scalar(lambda x: 100*x-x**2-(20*x-500), bracket=[0, 100], method='brentq')
+# print("Break-even root = %.2f"%(round(res2.root, 2)))
+
+# import math
+# from scipy.optimize import root_scalar
+# res=root_scalar(lambda x: x**2-4, bracket=[1, 3], method='brentq')
+# res2=root_scalar(lambda x: x**3-8, bracket=[1, 3], method='brentq')
+# res3=root_scalar(lambda x: math.log(x)-1, bracket=[2, 3], method='brentq')
+# s=0
+# for i in [res, res2, res3]:
+#     if i.root >2:
+#         s+=i.root
+# print("Sum of filtered roots: %.2f"%(round(s, 2)))
+
+# import numpy as np
+# from scipy import stats
+# 1. 準備一組學生的考試成績樣本
+# scores = np.array([72, 75, 68, 80, 85, 78, 90, 74])
+# 2. 進行單樣本 t 檢定，假設母體（或及格標準）平均數為 70
+# 回傳值包含 t 統計量 (statistic) 與 p 值 (pvalue)
+# t_stat, p_val = stats.ttest_1samp(scores, popmean=70)
+# print("學生平均分:", scores.mean())
+# print("t 統計量:", t_stat)
+# print("p 值:", p_val)
+# 3. 根據顯著水準 alpha = 0.05 進行假設檢定判斷
+# if p_val < 0.05:
+#     print("拒絕虛無假設：全班平均顯著異於 70 分")
+# else:
+#     print("接受虛無假設：與 70 分沒有顯著差異")
+
+# import numpy as np
+# from scipy import stats
+# p=np.array([1.2,0.8,1.5,1.1,0.9,1.3])
+# t_stat, p_val = stats.ttest_1samp(p, popmean=1)
+# print("p-value: ", round(p_val, 4))
+
+# import numpy as np
+# from scipy import stats
+# L=input().split(" ")
+# p=np.array(list(map(int, L)))
+# t_stat, p_val = stats.ttest_1samp(p, popmean=75)
+# if p_val < 0.05 and p.mean() != 75:
+#     print("Significant High")
+# else:
+#     print("Not Significant")
+
+# import numpy as np
+# from scipy import stats
+# data = np.array([52.1, 49.8, 51.0, 50.5, 49.2, 50.8])
+# t_stat, p_val = stats.ttest_1samp(data, popmean=50.0)
+# res = np.array([t_stat, p_val])
+# res_rounded = np.round(res, 3)
+# print(res_rounded)
+
+# import numpy as np
+# from scipy import stats
+# 1. 準備兩組獨立的樣本資料
+# group_a = np.array([85, 90, 88, 92, 86, 89])
+# group_b = np.array([75, 78, 72, 80, 76, 74])
+# 2. 進行獨立樣本 t 檢定
+# t_stat, p_val = stats.ttest_ind(group_a, group_b)
+# print("獨立樣本 t 統計量:", t_stat)
+# print("p 值:", p_val)
+# 3. 判斷兩組表現是否有顯著差異
+# if p_val < 0.05:
+#     print("兩組之間存在顯著差異")
+
+# import numpy as np
+# from scipy import stats
+# # 兩組樣本數不同也可以比較
+# a=np.array([1,2,3,4,5])
+# b=np.array([6,7,8,9,10,11,12])
+# t,p=stats.ttest_ind(a,b)
+# print(t,p)
+
+# import numpy as np
+# from scipy import stats
+# a=np.array([45,48,50,47,49])
+# b=np.array([40,42,41,44,43])
+# t,p=stats.ttest_ind(a,b)
+# print("p-value: %.4f"%(p))
+
+# import numpy as np
+# from scipy import stats
+# L=input().split(" ")
+# a=np.array(list(map(int,L)))
+# L2=input().split(" ")
+# b=np.array(list(map(float,L2)))
+# t,p=stats.ttest_ind(a,b)
+# if p<0.05 :
+#     print("Difference")
+# else:
+#     print("No Difference")
+
+# import numpy as np
+# from scipy import stats
+# 1. 準備同一群學生「特訓前」與「特訓後」的成績（具備嚴格配對關係）
+# before = np.array([65, 70, 72, 68, 80, 75])
+# after = np.array([78, 85, 80, 82, 88, 84])
+# 2. 進行配對樣本 t 檢定
+# t_stat, p_val = stats.ttest_rel(before, after)
+# print("配對樣本 t 統計量:", t_stat)
+# print("p 值:", p_val)
+# if p_val < 0.05:
+#     print("特訓前後有顯著進步差異")
 
 # import numpy as np
 # from scipy import stats
@@ -461,18 +624,192 @@
 # t,p=stats.ttest_rel(bf,at)
 # print("Mean Improvement Rate: %.2f%%, p-value: %.4f"%(np.mean(N),p))
 
+# import matplotlib.pyplot as plt # 匯入函式庫
+# x=[1,2,3,4,5]                   # 準備資料
+# y=[2,7,8,6,9]
+# plt.plot(x,y,"o",color="r")     # 繪製折線圖(點)
+# plt.show()
+# plt.plot(x,y,color="b")         # 只有線 
+# plt.show() 
+# plt.plot(x,y,"-o",color="g")    # 點和線
+# plt.show() 
+# plt.plot(x,y,"--o",color="y")    # 點和虛線
+# plt.show() 
 
-import matplotlib.pyplot as plt # 匯入函式庫
-x=[1,2,3,4,5]                   # 準備資料
-y=[2,7,8,6,9]
-plt.plot(x,y,"o",color="r")     # 繪製折線圖(點)
-plt.show()
-plt.plot(x,y,color="b")         # 只有線 
-plt.show() 
-plt.plot(x,y,"-o",color="g")    # 點和線
-plt.show() 
-plt.plot(x,y,"--o",color="y")    # 點和虛線
-plt.show() 
+# import matplotlib.pyplot as plt
+# import numpy as np
+# # 只給 y, x 自動用索引
+# y = np.array([10,20,15,25])
+# plt.plot(y) # x 自動為 [0, 1, 2, 3]
+# plt.show() # 顯示圖表
 
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x= np.linspace(0,2*np.pi,100)
+# 畫兩條線，各自給 label
+# label 是寫在 plot() 裡，legend() 才會去讀它
+# plt.plot(x,np.sin(x),label="sin(x)")
+# plt.plot(x,np.cos(x),label="cos(x)")
+# 加上標題與軸標籤
+# plt.title("Sine and Cosine")
+# plt.xlabel("x (radians)")
+# plt.ylabel("y")
+# plt.legend()  # 顯示圖例
+# plt.grid()    # 顯示格線
+# plt.show()    
 
+# import matplotlib.pyplot as plt
+# import numpy as np
+# 設定中文字型(依作業系統選擇可用的)
+# plt.rcParams["font.sans-serif"] = ["Microsoft YaHei","SimHei","Arial Unicode MS"]  
+# 設定負號正常顯示(否則負號會變成方塊)
+# plt.rcParams["axes.unicode_minus"] = False
+# 之後畫圖就能使用中文了
+# plt.plot([1,2,3],[-1,-2,-3])
+# plt.title("測試中文範例")
+# plt.show()
+
+# plt.figure(figsize=寬, 高)) 控制圖表大小 (單位為英吋)
+# 建立一個 8x5 英吋的圖表
+# plt.figure(figsize=(8,5))
+# plt.plot([1,2,3],[1,4,9])
+# plt.title("自訂大小")
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.array([1,2,3,4,5])
+# y = np.array([100,105,102,110,115])
+# mi= np.argmax(y)
+# mp=y[mi]
+# mt=x[mi]
+# plt.plot(x,y,color="r",marker="o")
+# plt.title("Max Price: %d at Time %d"%(mp,mt))
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# with open("stock_trend.txt","r") as f:
+#     f.seek(0)
+#     t=np.array(f.readline().strip().split(" "),dtype=float)
+#     v=np.array(f.readline().strip().split(" "),dtype=float)
+#     print("Mean: %.2f"%np.mean(v))
+#     print("Std: %.2f"%np.std(v))
+#     plt.plot(t,v)
+#     plt.show()
    
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.linspace(-3,3,50)
+# y=2*x**2-4*x+1
+# plt.plot(x,y)
+# mi=np.argmin(y)
+# my=y[mi]
+# mx=x[mi]
+# print("Min Y: %.2f at X: %.2f"%(my,mx))
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.linspace(0,2*np.pi,50)
+# y1=np.sin(x)
+# y2=np.cos(x)
+# plt.plot(x,y1,label="sin")
+# plt.plot(x,y2,label="cos")
+# plt.legend()  
+# print("Max Absolute Difference: %.3f"%((np.max(np.abs(y1-y2)))))
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# x=[1,2,4,6,8,1,2,9,3]
+# y=[5,7,2,3,1,4,6,5,8]
+# plt.title("Simple Plot")
+# plt.xlabel("x")
+# plt.ylabel("y")
+# plt.scatter(x,y,c="r") # 繪製散佈圖
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# 模擬 100 位學生的身高與體重
+# np.random.seed(42)
+# height=np.random.normal(170,10,100) # 平均 170，標準差 10
+# weight=np.random.normal(65,8,100)   # 平均 65，標準差 8
+# plt.scatter(height,weight)          # 畫散佈圖
+# plt.xlabel("Height (cm)")
+# plt.ylabel("Weight (kg)")
+# plt.title("Height vs Weight")
+# plt.show()
+
+
+# import numpy as np
+# 1. 回傳單一隨機浮點數
+# print(np.random.randn())
+# 2. 建立一維陣列(如:包含五個隨機數)
+# print(np.random.randn(5))
+# 3. 建立二維矩陣(如:2 行 4 列的矩陣)
+# print(np.random.randn(2,4))
+
+# import numpy as np
+# 第一次: 設定種子為 42
+# np.random.seed(42)
+# print("第一組: ",np.random.randn(3))
+# 第二次: 除新設定相同的種子 42
+# np.random.seed(42)
+# print("第二組: ", np.random.randn(3))
+# 第三次: 不設定種子(或換號碼)，結果就會不同
+# print("第三組: ",np.random.randn(3))
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# np.random.seed(0)
+# x=np.random.randn(100)
+# y=np.random.randn(100)
+# 可以用遮罩把資料分成兩群，用不同的顏色畫在同一張圖上
+# 分成 [x>0] 與 [x<=0]
+# mask_pos=x>0
+# mask_neg=~mask_pos
+# plt.scatter(x[mask_pos],y[mask_pos],c="blue",label="x>0")
+# plt.scatter(x[mask_neg],y[mask_neg],c="red",label="x<=0")
+# plt.legend()
+# plt.title("Masked Scatter")
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.array(input().split(" "))
+# y=np.array(input().split(" "))
+# plt.scatter(x,y)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# np.random.seed(42)
+# x=np.random.randn(200)
+# y=np.random.randn(200)
+# mask_p=x>0
+# mask_n=~mask_p
+# plt.scatter(x[mask_p],y[mask_p],c="green",label="x>0")
+# plt.scatter(x[mask_n],y[mask_n],c="orange",label="x<=0")
+# plt.legend()
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# np.random.seed(0)
+# x=np.arange(50)
+# y=x+np.random.randn(50)*5
+# plt.scatter(x,y,s=100,alpha=0.6)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from scipy import constants as C
+# r=np.arange(1,11)
+# a=C.pi*r**2
+# plt.scatter(r,a)
+# plt.xlabel("Radius")
+# plt.ylabel("Area")
+# plt.title("Circle Area vs Radius")
+# plt.show()
+
