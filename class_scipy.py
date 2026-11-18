@@ -518,11 +518,6 @@
 # if p_val < 0.05:
 #     print("特訓前後有顯著進步差異")
 
-<<<<<<< HEAD
-
-
-
-=======
 # import numpy as np
 # from scipy import stats
 # mat1=np.array([[10,20,30],[12,22,28],[11,21,29]])
@@ -640,7 +635,6 @@
 # plt.show() 
 # plt.plot(x,y,"--o",color="y")    # 點和虛線
 # plt.show() 
->>>>>>> 76b7dab7a0a735c6dfb129ba32da16484a246ac7
 
 # import matplotlib.pyplot as plt
 # import numpy as np
@@ -808,18 +802,6 @@
 # plt.scatter(x,y,s=100,alpha=0.6)
 # plt.show()
 
-<<<<<<< HEAD
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy import constants as C
-r=np.arange(1,11)
-a=C.pi*r**2
-plt.scatter(r,a)
-plt.xlabel("Radius")
-plt.ylabel("Area")
-plt.title("Circle Area vs Radius")
-plt.show()
-=======
 # import matplotlib.pyplot as plt
 # import numpy as np
 # from scipy import constants as C
@@ -831,4 +813,144 @@ plt.show()
 # plt.title("Circle Area vs Radius")
 # plt.show()
 
->>>>>>> 76b7dab7a0a735c6dfb129ba32da16484a246ac7
+# import matplotlib.pyplot as plt
+# import numpy as np
+# with open('points.txt',"r")as f:
+#     line1=f.readline().strip().split(" ")
+#     line2=f.readline().strip().split(" ")
+#     x=np.array(line1,dtype=float)
+#     y=np.array(line2,dtype=float)
+#     mask = (x > 5) & (y > 10)
+#     count = np.sum(mask)
+#     print('Filtered Points Count: %d'%(count))
+#     plt.scatter(x, y)
+#     plt.show()
+    
+# import matplotlib.pyplot as plt
+# import numpy as np
+# al=np.array([[1,2],[3,4],[5,1],[2,6]])
+# r=np.sqrt(np.sum(al**2,axis=1))
+# print("Mean Disstance to Origin %.2f"%np.mean(r))
+# x=al[:,0]
+# y=al[:,1]
+# plt.scatter(x,y)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from scipy.interpolate import interp1d
+# x=[0,1,2,3,4]
+# y=[0,1,4,9,16]
+# fc=interp1d(x,y,kind="cubic")
+# x_n=np.linspace(0,4,100)
+# y_n=fc(x_n)
+# plt.figure(figsize=(6, 4))
+# plt.plot(x, y, 'ro', label='Original')          
+# plt.plot(x_n, y_n, 'b-', label='Cubic Interpolation')
+# plt.legend()
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# 五個科目的成績
+# subjects = ["Math", "English", "Physics", "Chemistry", "Biology"]
+# scores = [85, 92, 78, 88, 95]
+# 垂直長條圖
+# color 長條填充色
+# edgecolor 邊框色
+# width 長條寬度（預設 0.8）
+# linewidth 邊框粗細
+# plt.bar(subjects, scores)
+# plt.title("Exam Scores")
+# plt.ylabel("Score")
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# 三個科目，兩組（A班、B班）的成績
+# subjects = ["Math", "English", "Physics"]
+# class_a = [85, 78, 90]
+# class_b = [82, 88, 85]
+# 兩組資料要並排比較時，用 np.arange() 產生位置偏移
+# x = np.arange(len(subjects))  # [0, 1, 2]
+# width = 0.35
+# plt.bar(x - width/2, class_a, width, label='Class A')
+# plt.bar(x + width/2, class_b, width, label='Class B')
+# plt.xticks(x, subjects)       # 把 x 軸刻度換成科目名稱
+# plt.ylabel("Score")
+# plt.title("Class Comparison")
+# plt.legend()
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# categories=["Apple","Banana","Cherry"]
+# values=[10,20,15]
+# plt.bar(categories, values)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# na=["Sales","HR","R&D","Marketing"]
+# mo=[120,95,140,110]
+# print("Top Department: %s, Revenue: %d"%(na[mo.index(max(mo))],max(mo)))
+# plt.bar(na,mo)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# ob=["Math","Sci","Eng"]
+# b=[80,85,75]
+# g=[85,90,88]
+# x = np.arange(len(ob)) 
+# width = 0.35
+# plt.bar(x - width/2, b, width, label='Male')
+# plt.bar(x + width/2, g, width, label='Female')
+# plt.xticks(x, ob)    
+# plt.legend()
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# Q=np.array(["Q1","Q2","Q3","Q4"])
+# a=np.array([50,60,55,70])
+# b=np.array([55,62,70,72])
+# a_b=np.abs(a-b)
+# print("Hight Growth Quarter: %s"%(Q[np.argmax(a_b)]))
+# plt.bar(Q,a_b)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# languages = ["Python","JavaScript","Java","C++","Go"]
+# popularity=[30,25,20,15,10]
+# # 水平長條圖
+# plt.barh(languages,popularity)
+# plt.xlabel("Popularity(%)")
+# plt.title("Programming Languages")
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# countries=["Taiwan","Japan","Korea"]
+# gdp=[800,5000,1800]
+# plt.barh(countries,gdp)
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# frameworks=["React","Vue","Angular","Svelte","Django"]
+# stars=[220,207,95,78,124]
+# plt.barh 預設第一個類別在最下面，看起來不直覺。
+# 用 plt.gca().invert_yaxis() 可以把 y 軸反轉，讓最大值出現在最上面
+# plt.barh(frameworks, stars, color='#3498db')
+# plt.gca().invert_yaxis()  # 反轉 y 軸
+# plt.xlabel("GitHub Stars (k)")
+# plt.title("Framework Popularity")
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from scipy import constants
+# pl=np.array(["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"])
+# d=np.array([57.9,108.2,149.6,227.9,778.6,1433.5,2872.5,4495.1])
+# C=d*1e9/constants.c
+# plt.barh(pl,C)
+# plt.title("Travel time from Sun (s)")
+# plt.gca().invert_yaxis()
+# plt.show()
+
