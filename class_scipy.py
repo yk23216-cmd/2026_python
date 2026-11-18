@@ -518,9 +518,129 @@
 # if p_val < 0.05:
 #     print("特訓前後有顯著進步差異")
 
+<<<<<<< HEAD
 
 
 
+=======
+# import numpy as np
+# from scipy import stats
+# mat1=np.array([[10,20,30],[12,22,28],[11,21,29]])
+# mat2 = np.array([[15,25,31],[14,24,30],[16, 26, 32]])
+# n = mat1.shape[1]
+# min_p=float("inf")
+# u=-1
+# for i in range(n):
+#     col1 = mat1[:, i]
+#     col2 = mat2[:, i]
+#     t, p = stats.ttest_ind(col1, col2)
+#     if p < min_p:
+#         min_p = p
+#         u = i
+# print("Min p-value at index %d: %.4f" % (u, min_p))
+
+# import numpy as np
+# from scipy import stats
+# 同一批人的前後測
+# before = np.array([80, 85, 78, 90, 88])
+# after  = np.array([78, 82, 76, 85, 84])
+# 用配對 t 檢定（正確方式）
+# t_rel, p_rel = stats.ttest_rel(before, after)
+# print("配對 t 檢定 :", t_rel, p_rel)
+# 用獨立 t 檢定（錯誤方式！忽略配對關係）
+# t_ind, p_ind = stats.ttest_ind(before, after)
+# print("獨立 t 檢定 :", t_ind, p_ind)
+# 兩者結果不同！配對檢定通常 p 值更小（更靈敏）
+
+# import numpy as np
+# from scipy import stats
+# b=np.array([82,75,90,68,77])
+# a=np.array([78,74,85,65,76])
+# t,p=stats.ttest_rel(b,a)
+# print("p-value: %.4f"%(p))
+
+# import numpy as np
+# from scipy import stats
+# b=np.array(input().split(" "),dtype=int)
+# a=np.array(input().split(" "),dtype=int)
+# t,p=stats.ttest_rel(b,a)
+# if p < 0.05:
+#     print("Significant Effect")
+# else:
+#     print("No Effect")
+
+# import numpy as np
+# from scipy import stats
+# 1. 建立一個 2X2 的列聯表 (例如:性別與偏好某種產品的交叉統計)
+# 橫排代表性別 (男、女)，縱排代表偏好 (喜歡、不喜歡)
+# contingency_table = np.array([[30, 10],
+#                               [20, 40]])
+# 2. 進行卡方獨立檢定 
+# 回傳值依序為:chi2 統計量, p-value, 自由度, 期望值矩陣
+# chi2_stat, p_value, dof, expected = stats.chi2_contingency(contingency_table)
+# print("卡方統計量:", chi2_stat)
+# print("p 值:", p_value)
+# if p_value < 0.05:
+#     print("拒絕獨立假設: 兩個變數之間有顯著關聯")
+
+# import numpy as np
+# from scipy import stats
+# n=np.array([[50,20],[30,40]])
+# t,p,d,e=stats.chi2_contingency(n)
+# print("p-value: %.4f"%(p))
+
+# import numpy as np
+# from scipy import stats
+# u=input().split(" ")
+# n=np.array([[u[0],u[1]],[u[2],u[3]]],dtype=int)
+# t,p,d,e=stats.chi2_contingency(n)
+# if p < 0.05:
+#     print("Dependent")
+# else:
+#     print("Independent")
+
+# import numpy as np
+# from scipy import stats
+# with open("multi_tests.txt","r")as f:
+#     lines=f.readlines()
+#     f.seek(0)
+#     n=0
+#     for i in range(len(lines)):
+#         u=f.readline().strip().split(" ")
+#         t,p=stats.ttest_1samp(np.array(list(map(float,u))),popmean=50)
+#         if p < 0.05:
+#             n+=i+1
+#     print("Significant group indices sum: %d"%(n))
+    
+# import numpy as np
+# from scipy import stats
+# group1 = np.array([[10,20,30,],[12,21,35],[11,19,32]])
+# group2 = np.array([[8,19,25],[9,18,27],[7,20,26]])
+# with open("feature_report.txt","w")as f:
+#     for i in range(group1.shape[1]):
+#         t, p = stats.ttest_ind(group1[:, i], group2[:, i])
+#         f.write("Feature %d | t: %.3f | p: %.3f\n" %(i+1, t, p))
+
+# import numpy as np
+# from scipy import stats
+# bf=np.array(list(map(int,input().split(" "))))
+# at=np.array(list(map(int,input().split(" "))))
+# N=(at-bf)/bf*100
+# t,p=stats.ttest_rel(bf,at)
+# print("Mean Improvement Rate: %.2f%%, p-value: %.4f"%(np.mean(N),p))
+
+# import matplotlib.pyplot as plt # 匯入函式庫
+# x=[1,2,3,4,5]                   # 準備資料
+# y=[2,7,8,6,9]
+# plt.plot(x,y,"o",color="r")     # 繪製折線圖(點)
+# plt.show()
+# plt.plot(x,y,color="b")         # 只有線 
+# plt.show() 
+# plt.plot(x,y,"-o",color="g")    # 點和線
+# plt.show() 
+# plt.plot(x,y,"--o",color="y")    # 點和虛線
+# plt.show() 
+>>>>>>> 76b7dab7a0a735c6dfb129ba32da16484a246ac7
 
 # import matplotlib.pyplot as plt
 # import numpy as np
@@ -688,6 +808,7 @@
 # plt.scatter(x,y,s=100,alpha=0.6)
 # plt.show()
 
+<<<<<<< HEAD
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import constants as C
@@ -698,3 +819,16 @@ plt.xlabel("Radius")
 plt.ylabel("Area")
 plt.title("Circle Area vs Radius")
 plt.show()
+=======
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from scipy import constants as C
+# r=np.arange(1,11)
+# a=C.pi*r**2
+# plt.scatter(r,a)
+# plt.xlabel("Radius")
+# plt.ylabel("Area")
+# plt.title("Circle Area vs Radius")
+# plt.show()
+
+>>>>>>> 76b7dab7a0a735c6dfb129ba32da16484a246ac7
