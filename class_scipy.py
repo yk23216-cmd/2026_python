@@ -954,3 +954,112 @@
 # plt.gca().invert_yaxis()
 # plt.show()
 
+# import matplotlib.pyplot as plt
+# import numpy as np
+# 產生 1000 個常態分布隨機數(平均 0，標準差 1)
+# np.random.seed(42)
+# data=np.random.randn(1000)
+# 畫直方圖(預設 10 個 bin)
+# plt.hist(data)
+# plt.title("Histogram of Random Data")
+# plt.xlabel("Value")
+# plt.ylabel("Frequency")
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# 1. 產生數據
+# x=np.linspace(0,10,100)
+# y1=np.sin(x)
+# y2=np.cos(x)
+# y3=np.exp(x/10)  # 指數
+# y4=np.log(x+1)
+# 2. 建立 2X2 的子圖畫布
+# # plt.subplots() 回傳一個元組(Figure 物件，所有子圖的陣列)
+# fig,axs = plt.subplots(2,2,figsize=(10,8))
+# 3. 分別繪製四個子圖
+# axs[0,0].plot(x,y1,"r-")
+# axs[0,0].set_title("Sine")
+# axs[0,1].plot(x,y2,"g--")
+# axs[0,1].set_title("Cosine")
+# axs[1,0].plot(x,y3,"b-.")
+# axs[1,0].set_title("Exponential")
+# axs[1,1].plot(x,y4,"m:")
+# axs[1,1].set_title("Logarithm")
+# 4. 自動調整排版並顯示
+# plt.tight_layout() 自動調整子圖間距，避免標題或軸標籤被截斷
+# plt.tight_layout
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# x=np.linspace(1,5)
+# y1=x**2
+# y2=x**3
+# fig,axs = plt.subplots(1,2,figsize=(10,4))
+# axs[0].plot(x,y1,"r-")
+# axs[1].plot(x,y2,"g--")
+# u=np.abs(y1[-1]-y2[-1])
+# print("Difference at x=5: %d"%(u))
+# plt.tight_layout
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# np.random.seed(42)
+# x = np.random.normal(0, 1, 200)
+# y = np.random.normal(0, 1, 200)
+# inside = (x**2 + y**2) <= 1
+# outside = ~inside
+# plt.scatter(x[inside], y[inside], color="blue", label="inside")
+# plt.scatter(x[outside], y[outside], color="gray", label="outside")
+# plt.legend()
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from scipy import stats
+# A=[70,75,80,85,90]
+# B=[65,70,75,80,85]
+# t_stat, p_val = stats.ttest_ind(A,B)
+# means = [np.mean(A), np.mean(B)]
+# labels = ['Group A', 'Group B']
+# plt.bar(labels, means)
+# plt.title("t-test p = %.4f"%(p_val))
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# from scipy.optimize import minimize_scalar
+# res = minimize_scalar(lambda x: (x - 3) ** 2 + 5)
+# x_min = res.x
+# y_min = res.fun
+# x = np.linspace(-1, 7, 400)
+# y = (x - 3) ** 2 + 5
+# plt.plot(x, y)
+# plt.plot(x_min, y_min, "ro")
+# plt.title("Min at x=%.2f"%(x_min))
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# scores = {"Alice": 85, "Bob": 72, "Charlie": 90, "David": 68, "Eve": 95}
+# names = []
+# values = []
+# for k, v in scores.items():
+#     names.append(k)
+#     values.append(v)
+# plt.barh(names, values)
+# plt.gca().invert_yaxis()
+# plt.show()
+
+# import matplotlib.pyplot as plt
+# import numpy as np
+# np.random.seed(42)
+# x = np.random.normal(70, 10, 100)
+# Pass=x>=60
+# Fail=(~Pass).sum()
+# plt.bar(["Pass"],x[Pass],color="green")
+# plt.bar(["Fail"],x[Fail],color="red")
+# plt.legend()
+# plt.show()
+
